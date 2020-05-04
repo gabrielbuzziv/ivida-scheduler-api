@@ -2116,7 +2116,13 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "^1.2.5"
 
-moment@^2.22.2:
+moment-timezone@^0.5.28:
+  version "0.5.28"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.28.tgz#f093d789d091ed7b055d82aa81a82467f72e4338"
+  dependencies:
+    moment ">= 2.9.0"
+
+"moment@>= 2.9.0", moment@^2.22.2, moment@^2.25.2:
   version "2.25.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.25.2.tgz#0f521c1c99322cc55dee08678225fb4e3b4393ca"
 

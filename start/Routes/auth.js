@@ -2,7 +2,12 @@
 
 const Route = use('Route')
 
-Route.group(() => {})
+Route.group(() => {
+  /**
+   * Admin/MeetingController routes.
+   */
+  Route.resource('meetings', 'MeetingController').apiOnly()
+})
   .prefix('admin')
   .namespace('Admin')
   .middleware(['auth'])
