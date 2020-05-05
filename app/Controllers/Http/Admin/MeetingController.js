@@ -23,6 +23,10 @@ class MeetingController {
     try {
       const meeting = await Meeting.findOrFail(id)
 
+      await meeting.loadMany({
+        schedules: query => query.orderBy('time', 'asc')
+      })
+
       return meeting
     } catch (err) {
       return response.status(err.status).send({
@@ -118,6 +122,7 @@ class MeetingController {
 
       return meeting
     } catch (err) {
+      console.log(err)
       return response
         .status(err.status)
         .send({ error: { message: 'Não foi possível criar a reunião.' } })

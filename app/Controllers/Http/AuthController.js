@@ -11,7 +11,7 @@ class AuthController {
         const user = await User.findByOrFail('email', email)
         const jwt = await auth.generate(user)
 
-        return { token: jwt.token }
+        return { token: jwt.token, user }
       }
     } catch (err) {
       console.log(err)
