@@ -1,5 +1,7 @@
 'use strict'
 
+const Env = use('Env')
+
 module.exports = {
   /*
   |--------------------------------------------------------------------------
@@ -16,7 +18,7 @@ module.exports = {
   | Function - Receives the current origin and should return one of the above values.
   |
   */
-  origin: ['18.230.130.124'],
+  origin: Env.get('NODE_ENV') === 'development' ? true : ['18.230.130.124'],
 
   /*
   |--------------------------------------------------------------------------
