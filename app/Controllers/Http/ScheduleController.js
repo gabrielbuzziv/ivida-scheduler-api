@@ -8,14 +8,14 @@ class MeetingController {
   /**
    * Return the active meeting with date between today and the next 7 days.
    */
-  async index () {
-    const meetings = await Meeting.query()
+  async index ({ params }) {
+    const { id } = params
+
+    let meeting = await Meeting.query()
       .where('is_active', true)
       .where('date', '>=', moment())
-      .orderBy('date', 'ASC')
-      .fetch()
-
-    return meetings
+      .where('id', id)
+      .first()
 
     if (meeting === null) return null
 

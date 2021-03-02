@@ -10,7 +10,8 @@ Route.post('auth', 'AuthController.store')
 /**
  * MeetingController routes.
  */
-Route.get('meeting', 'MeetingController.index')
+Route.get('meetings', 'MeetingController.index')
+Route.get('schedules/:id', 'ScheduleController.index')
 
 /**
  * SubscriptionController routes.
