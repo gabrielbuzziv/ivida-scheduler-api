@@ -19,7 +19,15 @@ class UserSeeder {
       await User.create({
         username: 'gabrielbuzzi',
         email: 'gabrielbuzziv@gmail.com',
-        password: '123456'
+        password: 'IgrejaVida@2021'
+      })
+    }
+
+    if (!(await User.findBy('email', 'maateuscorrea@gmail.com '))) {
+      await User.create({
+        username: 'mateuscorrea',
+        email: 'maateuscorrea@gmail.com ',
+        password: 'IgrejaVida@2021'
       })
     }
 
@@ -27,7 +35,7 @@ class UserSeeder {
       await User.create({
         username: 'prthyagomello',
         email: 'pastorthyago@gmail.com',
-        password: '123456'
+        password: 'IgrejaVida@2021'
       })
     }
   }
