@@ -9,34 +9,26 @@ class MeetingController {
    * Return the active meeting with date between today and the next 7 days.
    */
   async index () {
-    const meetings = await Meeting.query()
+    let meetings = await Meeting.query()
+      .with('schedules', builder => {
+        builder.withCount('subscriptions as subscribed')
+        builder.orderBy('time', 'asc')
+      })
       .where('is_active', true)
       .where('date', '>=', moment())
       .orderBy('date', 'ASC')
       .fetch()
 
-    return meetings
+    meetings = meetings.toJSON()
 
-    if (meeting === null) return null
-
-    await meeting.loadMany({
-      schedules: builder => {
-        return builder
-          .withCount('subscriptions as subscribed')
-          .orderBy('time', 'asc')
-      }
-    })
-
-    meeting = meeting.toJSON()
-
-    return {
+    return meetings.map(meeting => ({
       ...meeting,
       schedules: meeting.schedules.map(schedule => ({
         ...schedule,
         available: schedule.vacancies - schedule.__meta__.subscribed,
         busy: schedule.__meta__.subscribed
       }))
-    }
+    }))
   }
 }
 
