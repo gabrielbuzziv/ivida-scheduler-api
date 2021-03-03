@@ -18,7 +18,8 @@ module.exports = {
   | Function - Receives the current origin and should return one of the above values.
   |
   */
-  origin: Env.get('NODE_ENV') === 'development' ? true : ['18.230.130.124'],
+  // origin: Env.get('NODE_ENV') === 'development' ? true : ['18.230.130.124'],
+  origin: true,
 
   /*
   |--------------------------------------------------------------------------
